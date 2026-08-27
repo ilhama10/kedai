@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\QueryException;
+use Illuminate\Support\Carbon;
 
 class Order extends Model
 {
@@ -30,6 +32,39 @@ class Order extends Model
         'tax_amount' => 'float',
         'total_amount' => 'float',
     ];
+
+    public static function createWithUniqueOrderNumber(array $attributes, string $branchCode): self
+    {
+        $date = Carbon::now();
+        $prefix = sprintf('%s-%s-', $branchCode, $date->format('Ymd'));
+
+        for ($attempt = 0; $attempt < 10; $attempt++) {
+            $lastOrderNumber = static::where('branch_id', $attributes['branch_id'])
+                ->whereBetween('created_at', [
+                    $date->copy()->startOfDay(),
+                    $date->copy()->endOfDay(),
+                ])
+                ->where('order_number', 'like', $prefix . '%')
+                ->orderByDesc('order_number')
+                ->value('order_number');
+
+            $sequence = $lastOrderNumber
+                ? ((int) substr($lastOrderNumber, strrpos($lastOrderNumber, '-') + 1)) + 1
+                : 1;
+
+            try {
+                return static::create(array_merge($attributes, [
+                    'order_number' => sprintf('%s%04d', $prefix, $sequence),
+                ]));
+            } catch (QueryException $exception) {
+                if ($exception->getCode() !== '23000' || $exception->errorInfo[1] !== 1062) {
+                    throw $exception;
+                }
+            }
+        }
+
+        throw new \RuntimeException('Unable to generate a unique order number.');
+    }
 
     public function branch()
     {

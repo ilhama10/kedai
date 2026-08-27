@@ -258,14 +258,7 @@ class PublicMenuController extends Controller
 
         // Generate Order Number
         $branchCode = Branch::find($branchId)->code;
-        $dateStr = now()->format('Ymd');
-        $seq = Order::where('branch_id', $branchId)
-            ->whereDate('created_at', now()->toDateString())
-            ->count() + 1;
-        $orderNumber = sprintf("%s-%s-%04d", $branchCode, $dateStr, $seq);
-
-        $order = Order::create([
-            'order_number' => $orderNumber,
+        $order = Order::createWithUniqueOrderNumber([
             'customer_access_token_hash' => $tokenHash,
             'branch_id' => $branchId,
             'table_id' => $request->order_type === 'DINE_IN' ? $request->table_id : null,
@@ -279,7 +272,7 @@ class PublicMenuController extends Controller
             'payment_status' => 'UNPAID',
             'kitchen_status' => 'NOT_SENT',
             'notes' => $request->notes ?? null,
-        ]);
+        ], $branchCode);
 
         // Insert Items, Variants & Addons
         foreach ($orderItemsData as $itemData) {
