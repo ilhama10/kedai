@@ -1279,7 +1279,7 @@ export default function AdminCabangPortal({ user }) {
                                         {/* QR Code Container */}
                                         <div className="bg-white p-3 rounded-2xl border border-gray-200 inline-block shadow-inner">
                                             <img
-                                                src={`https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(`http://127.0.0.1:8000/order?token=${tbl.qr_code_token}`)}`}
+                                                src={`https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(`${window.location.origin}/order?token=${tbl.qr_code_token}`)}`}
                                                 alt={`QR Meja ${tbl.table_number}`}
                                                 className="w-36 h-36 mx-auto"
                                             />
