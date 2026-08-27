@@ -459,7 +459,7 @@ export default function AdminCabangPortal({ user }) {
                         </div>
                     </div>
 
-                    <div className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+                    <div className="staff-table-scroll bg-white rounded-2xl shadow-sm border border-gray-200">
                         <table className="w-full text-left border-collapse text-xs">
                         <thead>
                             <tr className="bg-gray-50 border-b text-gray-600 font-bold uppercase">
@@ -541,7 +541,7 @@ export default function AdminCabangPortal({ user }) {
             {/* Content: Promo Management */}
             {activeTab === 'promos' && (
                 <div className="space-y-4">
-                    <div className="flex justify-between items-center bg-white p-4 rounded-2xl shadow-sm border">
+                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 bg-white p-4 rounded-2xl shadow-sm border">
                         <div>
                             <h3 className="font-bold text-sm text-gray-900">Daftar Promo Aktif Cabang</h3>
                             <p className="text-xs text-gray-500">Kelola diskon & promo khusus cabang ini</p>
@@ -554,7 +554,7 @@ export default function AdminCabangPortal({ user }) {
                         </button>
                     </div>
 
-                    <div className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+                    <div className="staff-table-scroll bg-white rounded-2xl shadow-sm border border-gray-200">
                         <table className="w-full text-left border-collapse text-xs">
                             <thead>
                                 <tr className="bg-gray-50 border-b text-gray-600 font-bold uppercase">
@@ -708,7 +708,7 @@ export default function AdminCabangPortal({ user }) {
 
             {/* Content: Inventory Stock Movement */}
             {activeTab === 'inventory' && (
-                <div className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+                <div className="staff-table-scroll bg-white rounded-2xl shadow-sm border border-gray-200">
                     <table className="w-full text-left border-collapse text-xs">
                         <thead>
                             <tr className="bg-gray-50 border-b text-gray-600 font-bold uppercase">

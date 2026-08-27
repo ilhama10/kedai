@@ -211,7 +211,7 @@ export default function KasirPOS({ user }) {
             </div>
 
             {/* Orders Table */}
-            <div className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+            <div className="staff-table-scroll bg-white rounded-2xl shadow-sm border border-gray-200">
                 <table className="w-full text-left border-collapse">
                     <thead>
                         <tr className="bg-gray-50 border-b border-gray-200 text-xs font-bold text-gray-600 uppercase">

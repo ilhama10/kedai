@@ -176,7 +176,7 @@ export default function OwnerPortal({ user }) {
             {/* User Management Tab */}
             {activeTab === 'users' && (
                 <div className="space-y-4">
-                    <div className="flex justify-between items-center bg-white p-4 rounded-2xl shadow-sm border">
+                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 bg-white p-4 rounded-2xl shadow-sm border">
                         <div>
                             <h3 className="font-bold text-sm text-gray-900">Daftar Pengguna Staff Multi-Cabang</h3>
                             <p className="text-xs text-gray-500">Buat dan kelola akun Admin Cabang, Kasir, Dapur, & Owner</p>
@@ -189,7 +189,7 @@ export default function OwnerPortal({ user }) {
                         </button>
                     </div>
 
-                    <div className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+                    <div className="staff-table-scroll bg-white rounded-2xl shadow-sm border border-gray-200">
                         <table className="w-full text-left border-collapse text-xs">
                             <thead>
                                 <tr className="bg-gray-50 border-b text-gray-600 font-bold uppercase">
@@ -244,7 +244,7 @@ export default function OwnerPortal({ user }) {
             {/* Branch Management Tab */}
             {activeTab === 'branches' && (
                 <div className="space-y-4">
-                    <div className="flex justify-between items-center bg-white p-4 rounded-2xl shadow-sm border">
+                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 bg-white p-4 rounded-2xl shadow-sm border">
                         <div>
                             <h3 className="font-bold text-sm text-gray-900">Daftar Cabang Kedai Lesehan</h3>
                             <p className="text-xs text-gray-500">Kelola dan tambah lokasi cabang baru</p>
@@ -288,7 +288,7 @@ export default function OwnerPortal({ user }) {
             {/* Reports Tab */}
             {activeTab === 'reports' && salesReport && (
                 <div className="space-y-6">
-                    <div className="grid grid-cols-4 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
                         <div className="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm">
                             <span className="text-xs font-bold text-gray-400 uppercase">Total Revenue (Pendapatan)</span>
                             <h3 className="text-2xl font-black text-brand-600 mt-1">
@@ -335,7 +335,7 @@ export default function OwnerPortal({ user }) {
 
             {/* Central Master Menu Tab */}
             {activeTab === 'master_menu' && (
-                <div className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+                <div className="staff-table-scroll bg-white rounded-2xl shadow-sm border border-gray-200">
                     <table className="w-full text-left border-collapse text-xs">
                         <thead>
                             <tr className="bg-gray-50 border-b text-gray-600 font-bold uppercase">
@@ -377,7 +377,7 @@ export default function OwnerPortal({ user }) {
 
             {/* System Audit Logs Tab */}
             {activeTab === 'audit' && (
-                <div className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+                <div className="staff-table-scroll bg-white rounded-2xl shadow-sm border border-gray-200">
                     <table className="w-full text-left border-collapse text-xs">
                         <thead>
                             <tr className="bg-gray-50 border-b text-gray-600 font-bold uppercase">
