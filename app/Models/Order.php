@@ -40,10 +40,6 @@ class Order extends Model
 
         for ($attempt = 0; $attempt < 10; $attempt++) {
             $lastOrderNumber = static::where('branch_id', $attributes['branch_id'])
-                ->whereBetween('created_at', [
-                    $date->copy()->startOfDay(),
-                    $date->copy()->endOfDay(),
-                ])
                 ->where('order_number', 'like', $prefix . '%')
                 ->orderByDesc('order_number')
                 ->value('order_number');
